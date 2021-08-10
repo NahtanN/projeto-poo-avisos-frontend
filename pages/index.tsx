@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { MainLayout } from '../components/mainLayout/MainLayout'
+import { ButtonsLayout } from '../components/buttonsLayout/ButtonsLayout'
+import { PageTitle } from '../components/pageTitle/PageTitle'
+import { Notification } from '../components/notification/Notification'
 
 export default function Home() {
   return (
@@ -11,7 +14,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MainLayout />
+      <MainLayout>
+
+        <ButtonsLayout />
+
+        <PageTitle title="Avisos da Aula de POO"/>
+
+        <Notification />
+
+      </MainLayout>
     </div>
   )
 }

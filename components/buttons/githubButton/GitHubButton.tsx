@@ -4,7 +4,10 @@ import { FaGithub } from 'react-icons/fa'
 
 const GitHubButton = () => {
   return (
-    <button className={`${PatterStyle.button} ${styles.githubButton}`}>
+    <button 
+      className={`${PatterStyle.button} ${styles.githubButton}`}
+      
+    >
       <p>GitHub</p>
       <FaGithub size={22} id={styles.github} />
     </button>
