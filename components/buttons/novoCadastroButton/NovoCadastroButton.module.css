@@ -1,5 +1,6 @@
 .cadastroButton {
   background-color: #1983ff;
+  text-decoration: none;
 }
 
 .cadastroButton:hover {
