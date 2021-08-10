@@ -1,0 +1,9 @@
+.cadastroButton {
+  background-color: #1983ff;
+}
+
+.cadastroButton:hover {
+  opacity: 0.8;
+  background-color: white;
+  color: #1983ff;
+}

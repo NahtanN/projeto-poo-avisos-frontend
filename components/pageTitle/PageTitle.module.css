@@ -1,0 +1,7 @@
+.headerTitle {  
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0rem 0.3rem rgb(230, 230, 230);
+  padding: 1rem;
+}

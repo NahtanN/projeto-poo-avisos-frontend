@@ -1,0 +1,12 @@
+.githubButton {
+  background-color: black;
+}
+
+#github {
+  margin-left: 1rem;
+}
+
+.githubButton:hover {
+  background-color: white;
+  color: black;
+}
