@@ -7,6 +7,7 @@ const SalvarButton = () => {
 
       <button
         className={styles.salvarButton}
+        type="submit"
       >
         <p>Salvar</p>
       </button>
