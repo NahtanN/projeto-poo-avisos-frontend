@@ -28,6 +28,7 @@ const Notification = () => {
 
         </div>
       </div>
+      
       <div className={styles.wrapper}>
         <div className={styles.container}>
 

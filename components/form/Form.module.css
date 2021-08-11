@@ -1,0 +1,38 @@
+.wrapper {
+  box-shadow: 0rem 0.3rem rgb(230, 230, 230);
+}
+
+.container {  
+  padding: 2rem 5rem;
+  /* background-color: yellowgreen; */
+}
+
+.titleForm {
+  padding: 3rem
+}
+
+.titleInput {
+  width: 70%;
+  border-style: none;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  background-color: rgb(230, 230, 230);
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+.descricaoInput {
+  border-style: none;
+  border-radius: .5rem;
+  background-color: rgb(230, 230, 230);
+
+  padding: 1rem;
+
+  position: relative;
+  left: 2rem;
+  top: 1rem;
+
+  width: 70%;
+  max-width: 70%;
+  height: 20rem;
+}

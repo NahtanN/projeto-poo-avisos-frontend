@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { MainLayout } from '../components/mainLayout/MainLayout'
 import { ButtonsLayout } from '../components/buttonsLayout/ButtonsLayout'
 import { PageTitle } from '../components/pageTitle/PageTitle'
+import { Form } from '../components/form/Form'
 
 const CreateNotification = () => {
 
@@ -23,6 +24,8 @@ const CreateNotification = () => {
         />
 
         <PageTitle title="Cadastrar novo aviso"/>
+
+        <Form />
 
       </MainLayout>
     </div>

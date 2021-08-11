@@ -1,0 +1,21 @@
+.containerButton {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.salvarButton {
+  display: flex;
+
+  padding: .5rem 5rem;
+  border-style: none;
+  background-color: #1983ff;
+  color: white;
+
+  border-radius: .5rem;
+  transition: all 0.5s;
+}
+
+.salvarButton:hover {
+  opacity: 0.6;
+}
