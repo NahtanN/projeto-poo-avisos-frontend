@@ -4,6 +4,7 @@ import { ChangeEvent, ChangeEventHandler, FormEvent, TextareaHTMLAttributes, use
 import API from '../../service/api'
 import { useRouter } from 'next/dist/client/router'
 import validation from '../../validation/validation'
+import validationErrorHandler from '../../errors/validationErrorHandler'
 
 const Form = () => {
 
@@ -63,14 +64,17 @@ const Form = () => {
   const handleSubmit = async (event: FormEvent) => {
 
     event.preventDefault()
-    console.log(formData)
 
     try {
-      const result = await validation(formData)
-      console.log(result)
+
+      await validation(formData)
+
     } catch(err) {
-      console.log(err)
+
+      return validationErrorHandler(err)
+
     }
+
     // await API.post('/api', formData)
     
     // history.push('/')
@@ -134,7 +138,7 @@ const Form = () => {
             <input
               type="text"
               className={styles.titleInput}
-              placeholder="Link"
+              placeholder="URL"
               name="url"
               onChange={handleInput}
             />
