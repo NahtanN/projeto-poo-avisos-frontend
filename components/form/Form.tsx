@@ -3,6 +3,7 @@ import { SalvarButton } from '../buttons/salvarButton/SalvarButton'
 import { ChangeEvent, ChangeEventHandler, FormEvent, TextareaHTMLAttributes, useState } from 'react'
 import API from '../../service/api'
 import { useRouter } from 'next/dist/client/router'
+import validation from '../../validation/validation'
 
 const Form = () => {
 
@@ -13,7 +14,7 @@ const Form = () => {
     description: '',
     link: {
       title: '',
-      link: '',
+      url: '',
     }
   })
 
@@ -34,12 +35,12 @@ const Form = () => {
       })
     }
 
-    if (name === 'link') {
+    if (name === 'url') {
       return setFormData({
         ...formData,
         link: {
           ...formData.link,
-          link: value
+          url: value
         }
       })
     }
@@ -62,10 +63,17 @@ const Form = () => {
   const handleSubmit = async (event: FormEvent) => {
 
     event.preventDefault()
+    console.log(formData)
 
-    await API.post('/api', formData)
+    try {
+      const result = await validation(formData)
+      console.log(result)
+    } catch(err) {
+      console.log(err)
+    }
+    // await API.post('/api', formData)
     
-    history.push('/')
+    // history.push('/')
 
   }
 
@@ -127,7 +135,7 @@ const Form = () => {
               type="text"
               className={styles.titleInput}
               placeholder="Link"
-              name="link"
+              name="url"
               onChange={handleInput}
             />
 
