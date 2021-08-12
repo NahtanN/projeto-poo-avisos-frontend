@@ -7,8 +7,8 @@ const errorHandler = (err: ValidationError) => {
   err.inner.forEach(err => {
     if (err.path) errors.push(err.message)
   })
-  
-  console.log(errors)
+
+  return errors
 
 }
 

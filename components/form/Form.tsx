@@ -1,13 +1,15 @@
 import styles from './Form.module.css'
 import { SalvarButton } from '../buttons/salvarButton/SalvarButton'
-import { ChangeEvent, ChangeEventHandler, FormEvent, TextareaHTMLAttributes, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import API from '../../service/api'
 import { useRouter } from 'next/dist/client/router'
 import validation from '../../validation/validation'
 import validationErrorHandler from '../../errors/validationErrorHandler'
+import { useWarning } from '../warningsLayout/WarningsLayout'
 
 const Form = () => {
-
+  
+  const dispatch = useWarning()
   const history = useRouter()
 
   const [formData, setFormData] = useState({
@@ -71,13 +73,30 @@ const Form = () => {
 
     } catch(err) {
 
-      return validationErrorHandler(err)
+
+      const errors = validationErrorHandler(err)
+
+      return dispatch({
+        type: 'ERROR',
+        message: errors[0]
+      })
 
     }
 
-    // await API.post('/api', formData)
+    try {
+
+      await API.post('/api', formData)
+
+    } catch (err) {
+
+      return dispatch({
+        type: 'ERROR',
+        message: 'Erro no servidor!'
+      })
+
+    }
     
-    // history.push('/')
+    history.push('/')
 
   }
 

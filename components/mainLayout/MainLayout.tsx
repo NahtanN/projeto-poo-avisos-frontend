@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import styles from './MainLayout.module.css'
+import { ReactChild } from 'react'
 
 interface IMainLayout {
   title: string;
-  children: any;
+  children: ReactChild | ReactChild[];
 }
 
 const MainLayout = ({ title, children }: IMainLayout) => {
