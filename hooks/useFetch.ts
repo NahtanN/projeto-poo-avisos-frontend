@@ -1,3 +1,3 @@
 import API from "../service/api";
 
-export const fetcher = (url: string) => API.get(url).then(response => response.data)
+export const fetcher = (path: string) => API.get(path).then(response => response.data)

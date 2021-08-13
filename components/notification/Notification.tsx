@@ -4,8 +4,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { fetcher } from '../../hooks/useFetch'
 import { NotificationSchema, INotification } from '../../schemas/notificationSchema/NotificationSchema'
+import { InfiniteScroll } from '../infiniteScroll/InfiniteScroll'
 
-interface IReqData {
+export interface IReqData {
   totalItems: number;
   totalPages: number;
   currentPage: number;
@@ -14,19 +15,39 @@ interface IReqData {
 
 const Notification = () => {
 
-  const { data: reqData } = useSWR<IReqData>('http://localhost:8080/api?page=0', fetcher)
-
   const [notifications, setNotifications] = useState<INotification[]>()
+  const [page, setPage] = useState(0)
+
+  const { data: reqData } = useSWR<IReqData>(`/api?page=${page}`, fetcher)
 
   useEffect(() => {
 
     if (reqData && notifications == undefined) {
 
       setNotifications(reqData.notifications)
-
+      setPage(page + 1)
     }
 
   }, [reqData])
+
+  const handleNotifications = (newPosts: INotification[]) => {
+    
+    if (newPosts.length === 0) return 
+    console.log(newPosts)
+
+    setNotifications(prev => {
+
+      if (notifications != undefined){
+
+        setPage(page + 1)
+
+        return [...notifications, ...newPosts]
+
+      }
+
+    })    
+
+  }
 
   return (
     <div className={styles.footer}>
@@ -49,6 +70,11 @@ const Notification = () => {
           )
           : ''
       }
+
+      <InfiniteScroll 
+        reqData={reqData}
+        resData={handleNotifications}
+      />
 
     </div>
   )

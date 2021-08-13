@@ -1,4 +1,5 @@
 import styles from './NotificationSchema.module.css'
+import { v4 as uuid } from 'uuid'
 
 interface ILink {
   title: string;
@@ -21,7 +22,10 @@ const NotificationSchema = ({ ...props }: INotification) => {
   
   return (
 
-    <div className={styles.wrapper}>
+    <div 
+      key={props.id}
+      className={styles.wrapper}
+    >
       <div className={styles.container}>
 
         <article className={styles.notification}>
@@ -29,7 +33,7 @@ const NotificationSchema = ({ ...props }: INotification) => {
           <h2>{props.title}</h2>
           
           {
-            formatDescription.map(text => <h3>{text}</h3>)
+            formatDescription.map(text => <h3 key={uuid()}>{text}</h3>)
           }
 
           <a
