@@ -6,7 +6,7 @@ const GitHubButton = () => {
   return (
     <a
       className={`${PatterStyle.button} ${styles.githubButton}`}
-      href="https://github.com/NahtanN"
+      href="https://github.com/NahtanN/projeto-poo-avisos/blob/main/README.md"
       target="_blank"
     >
       <p>GitHub</p>
