@@ -1,8 +1,6 @@
 import { createContext, useReducer, ReactChild, Dispatch, SetStateAction } from "react"
 import styles from './WarningsLayout.module.css'
 import { Warning } from '../warning/Warning'
-import { v4 as uuid } from 'uuid'
-import { useContext } from "react"
 
 interface IWarningsProvider {
   children: ReactChild | ReactChild[];
@@ -20,7 +18,7 @@ interface IAction {
   payload: IPayload;
 }
 
-const WarningContext = createContext<any>((defaultValue: any) => {})
+export const WarningContext = createContext<any>((defaultValue: any) => {})
 
 // Layout que fica responsável por criar os Warnings no topo ta tela
 const WarningsLayout = ({ children }: IWarningsProvider) => {
@@ -62,25 +60,6 @@ const WarningsLayout = ({ children }: IWarningsProvider) => {
 
     </WarningContext.Provider>
   )
-
-}
-
-export const useWarning = () => {
-
-  const dispatch = useContext(WarningContext)
-
-  return ({ ...props }) => {
-
-    dispatch({
-      type: 'ADD_WARNING',
-      payload: {
-        id: uuid(),
-        type: props.type,
-        message: props.message
-      }
-    })
-
-  }
 
 }
 
